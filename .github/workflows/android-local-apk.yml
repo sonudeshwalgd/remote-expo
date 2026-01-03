@@ -1,0 +1,38 @@
+name: Android Local APK (Mac Mini)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  android-build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout latest code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Expo prebuild (if needed)
+        run: |
+          npx expo prebuild --no-install || true
+
+      - name: Build APK locally with EAS
+        env:
+          EXPO_NO_TELEMETRY: 1
+          CI: true
+        run: |
+          eas build \
+            --platform android \
+            --profile local-apk \
+            --local \
+            --non-interactive

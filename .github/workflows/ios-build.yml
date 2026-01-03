@@ -1,21 +1,21 @@
-name: iOS Build
+# name: iOS Build
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
 
-jobs:
-  build:
-    runs-on: self-hosted
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+# jobs:
+#   build:
+#     runs-on: self-hosted
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          bundle install
+#       - name: Install dependencies
+#         run: |
+#           bundle install
 
-      - name: Run Fastlane
-        run: |
-          fastlane ios build
+#       - name: Run Fastlane
+#         run: |
+#           fastlane ios build
