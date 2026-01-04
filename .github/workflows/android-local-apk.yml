@@ -22,17 +22,12 @@ jobs:
         run: |
           npm install
 
-      - name: Expo prebuild (if needed)
-        run: |
-          npx expo prebuild --no-install || true
+   
+        
 
       - name: Build APK locally with EAS
         env:
           EXPO_NO_TELEMETRY: 1
           CI: true
         run: |
-          eas build \
-            --platform android \
-            --profile local-apk \
-            --local \
-            --non-interactive
+          eas build --platform android --profile local-apk --local
