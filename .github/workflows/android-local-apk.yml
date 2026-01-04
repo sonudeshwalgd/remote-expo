@@ -4,3 +4,4 @@
       cd $GITHUB_WORKSPACE &&
       eas build --platform android --profile local-apk --local
     "
+ 
